@@ -3,7 +3,9 @@ require "airport"
 describe "Airport" do
   describe "#land" do
     it "should land and store a single plane in the airport" do
-      airport = Airport.new
+      airport = double("testcase")
+      allow(airport).to receive_messages(:weather => "sunny")
+      airport.weather = "sunny"
       airport.land(Plane.new)
       expect(airport.empty_hanger?).to(eq(false))
     end 
